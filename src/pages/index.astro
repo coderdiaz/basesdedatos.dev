@@ -1,8 +1,10 @@
 ---
 import { FilmIcon } from 'lucide-react';
+import { Image } from 'astro:assets';
 import Container from '@/components/Container.astro';
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import Callout from '@/components/Callout.astro';
+import ProfileAvatar from '@/assets/images/profile.jpg';
 
 const modules = (await Astro.glob('../content/modules/*.json')).sort((a, b) => a.order - b.order) ;
 ---
@@ -39,7 +41,7 @@ const modules = (await Astro.glob('../content/modules/*.json')).sort((a, b) => a
     </Container>
   </section>
   <section>
-    <Container class="pt-32 pb-24 flex flex-col gap-3">
+    <Container class="pt-24 pb-10 flex flex-col gap-3">
       <h2 id="donation" class="text-3xl font-bold">💖 Apoya mi trabajo</h2>
       <p>
         Si te ha gustado el contenido considera apoyarme con una donación, o también, puedes optar por compartir conmigo tu feedback para ayudarme a seguir mejorando y crear contenido de mayor calidad. Puedes enviarme tu retroalimentación a <a href="mailto:db@coderdiaz.com" class="font-semibold underline-offset-2">db@coderdiaz.com</a>.
@@ -62,4 +64,37 @@ const modules = (await Astro.glob('../content/modules/*.json')).sort((a, b) => a
         </li>
       </ul>
     </Container>
+  </section>
+  <section class="border-b border-gray-200">
+    <Container class="md:px-0">
+      <div class="py-16 flex flex-col-reverse md:flex-row gap-12  md:gap-4 items-center">
+        <div class="flex flex-col gap-4 md:w-[60rem] md:px-10 flex-grow">
+          <h3 class="text-2xl font-bold">Hola!, Soy Javier Diaz</h3>
+          <div class="relative flex flex-col gap-1.5 font-medium text-tones-900">
+            <p>
+              Un freelancer mexicano que trabaja con varias startups, empresas, agencias y particulares para construir productos y servicios para la web.
+            </p>
+            <p>
+              Me gusta colaborar con personas y equipos para crear experiencias y productos fantásticos que sean fáciles de usar.
+            </p>
+            <p>
+              En mi tiempo libre, usualmente podrás encontrarme leyendo, viendo películas, jugando videojuegos o aprendiendo algo nuevo.
+            </p>
+            <span class="absolute left-0 -ml-10 mt-4 top-0 mb-0 hidden font-mono text-[12rem] text-tones-600 leading-none opacity-5 lg:flex">*</span>
+          </div>
+          <div class="flex flex-col md:flex-row md:items-center gap-2 md:gap-4">
+            <a href="https://twitter.com/coderdiaz" rel="noreferrer" class="mt-2 px-6 py-2.5 text-center md:text-left md:w-max rounded-full bg-black text-white font-semibold transition hover:scale-105 border-2 border-black">
+              Sígueme en X
+            </a>
+            <a href="https://coderdiaz.com" rel="noreferrer" class="mt-2 px-6 py-2.5 text-center md:text-left md:w-max rounded-full text-black ring-4 ring-gray-100/50 bg-gray-200 font-semibold transition hover:bg-accent-100 hover:ring-accent-100">
+              Visita mi sitio web
+            </a>
+          </div>
+        </div>
+        <div class="w-[16rem] md:w-[28rem] h-80 overflow-hidden shadow-xl bg-white p-3 pb-9 rotate-[4deg] border border-gray-100">
+          <Image class="h-full w-full object-cover object-top pointer-events-none select-none" src={ProfileAvatar} alt="Avatar of Javier Diaz" />
+        </div>
+      </div>
+    </Container>
+  </section>
 </BaseLayout>
