@@ -1,5 +1,5 @@
 ---
-import { FilmIcon } from 'lucide-react';
+import { FilmIcon, InfoIcon } from 'lucide-react';
 import { Image } from 'astro:assets';
 import Container from '@/components/Container.astro';
 import BaseLayout from '@/layouts/BaseLayout.astro';
@@ -13,10 +13,14 @@ const modules = (await Astro.glob('../content/modules/*.json')).sort((a, b) => a
     <Container class="py-12 pb-4">
       <div class="flex flex-col gap-2.5">
         <h1 class="text-5xl leading-[3.5rem] font-bold">Curso gratuito de bases de datos con PostgreSQL </h1>
-        <p class="text-lg font-medium">Un curso en vivo (ahora con grabaciones) diseñado para aquellas personas que buscan aprender bases de datos completamente desde cero o que buscan reforzar algunos conceptos.</p>
-        <Callout>
-          <p class="font-medium">Cada uno de videos se encuentra en formato de grabación, por lo que no contienen ningún tipo de edición y se encuentran tal cual fueron transmitidos en vivo.</p>
+        <p class="text-lg font-medium">Un curso en vivo (ahora con grabaciones) para quienes buscan aprender bases de datos completamente desde cero o que buscan reforzar algunos conceptos.</p>
+        <h2 class="mt-6 font-bold text-2xl">Información</h2>
+        <p>El contenido esta diseñado para que personas que nunca han trabajado con bases de datos y desean incursionarse lo puedan hacer sin tantas fricciones. Cada uno de los módulos y clases fueron diseñadas tomando a los integrantes como referencia.</p>
+        <Callout class="flex-row text-base">
+          <InfoIcon size={18} className="flex-shrink-0 mt-1" />
+          <p class="font-medium text-base">Cada uno de los videos se encuentra en formato de grabación, por lo que no contienen ningún tipo de edición y se encuentran tal cual fueron transmitidos en vivo.</p>
         </Callout>
+        <p>Este curso tiene como objetivo proporcionar conocimientos prácticos y teóricos a los estudiantes y profesionales para que puedan aprovechar al máximo sus bases de datos.</p>
       </div>
     </Container>
   </section>

@@ -1,3 +1,9 @@
-<div class="px-5 py-3.5 snot-prose flex flex-col gap-3 bg-yellow-50 border text-yellow-800 border-yellow-500/30 rounded-xl">
+---
+import { cn } from '@/lib/utils';
+
+const { class: className } = Astro.props;
+---
+
+<div class={cn('px-5 py-3.5 snot-prose flex flex-col gap-3 bg-yellow-50 border text-yellow-800 border-yellow-500/30 rounded-xl', className)}>
   <slot />
 </div>
