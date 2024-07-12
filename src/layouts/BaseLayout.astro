@@ -1,0 +1,35 @@
+---
+import Container from '@/components/Container.astro';
+---
+<html lang="es" class="min-h-full antialiased selection:bg-accent-300 selection:text-accent-900">
+  <head>
+		<meta charset="utf-8" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="viewport" content="width=device-width" />
+		<meta name="generator" content={Astro.generator} />
+		<title>Aprende bases de datos con PostgreSQL totalmente gratis</title>
+	</head>
+  <body class="font-sans leading-relaxed h-full flex flex-col text-[#39301B]">
+    <section class="border-b border-gray-200">
+      <Container>
+        <a href="#donation" class="py-3 flex flex-col md:flex-row md:items-center md:justify-between text-sm font-medium">
+          <p class="font-semibold">Si te ha gustado, no te olvides de apoyarlo con una donación o tu feedback</p>
+          <p>Contribuir <span aria-hidden="true">→</span></p>
+        </a>
+      </Container>
+    </section>
+    <header>
+      <Container>
+        <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-2 md:gap-3 pt-8">
+          <a href="/" class="flex items-center gap-2">
+            <span class="font-semibold">Aprende bases de datos</span>
+          </a>
+          <nav class="flex items-center gap-4 gap-y-1 flex-wrap"></nav>
+        </div>
+      </Container>
+    </header>
+    <main class="h-full flex-grow">
+      <slot />
+    </main>
+  </body>
+</html>
