@@ -1,12 +1,61 @@
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Aprende bases de datos — Un curso gratuito en videos en PostgreSQL</title>
-	</head>
-	<body>
-		
-	</body>
-</html>
+---
+import { FilmIcon } from 'lucide-react';
+import Container from '@/components/Container.astro';
+import BaseLayout from '@/layouts/BaseLayout.astro';
+
+const modules = (await Astro.glob('../content/modules/*.json')).sort((a, b) => a.order - b.order) ;
+---
+<BaseLayout>
+  <section>
+    <Container class="py-12">
+      <div class="flex flex-col gap-2.5">
+        <h1 class="text-5xl leading-[3.5rem] font-bold">Curso gratuito de bases de datos con PostgreSQL </h1>
+        <p class="text-lg font-medium">Un curso en vivo (ahora con grabaciones) diseñado para aquellas personas que buscan aprender bases de datos completamente desde cero o que buscan reforzar algunos conceptos.</p>
+      </div>
+    </Container>
+  </section>
+  <section>
+    <Container class="py-10 flex flex-col gap-12">
+      <h2 class="text-3xl font-bold">Contenido del curso</h2>
+      <div class="flex flex-col gap-8">
+        {modules.map((module) => (
+          <div class="flex flex-col gap-3">
+            <h3 class="font-bold text-xl">{module.title}</h3>
+            <div class="flex items-center gap-4">
+              {module.videos.map((video: any) => (
+                <a href={video.url} rel="noreferrer" class="flex items-center gap-1 font-semibold">
+                  <FilmIcon size={20} />
+                  <span>{video.title} ({video.duration})</span>
+                </a>
+              ))}
+            </div>
+          </div>
+        ))}
+      </div>
+    </Container>
+  </section>
+  <section>
+    <Container class="pt-32 pb-24 flex flex-col gap-3">
+      <h2 id="donation" class="text-3xl font-bold">💖 Apoya mi trabajo</h2>
+      <p>
+        Si se ha gustado el contenido considera apoyarme con una donación, o también, puedes optar por compartir conmigo tu feedback para ayudarme a seguir mejorando y crear contenido de mayor calidad. Puedes enviarme tu retroalimentación a <a href="mailto:db@coderdiaz.com" class="font-semibold underline-offset-2">db@coderdiaz.com</a>.
+      </p>
+      <ul class="flex flex-col gap-3 mt-2">
+        <li>
+          <a class="font-semibold text-lg" href="https://donate.stripe.com/14k00H6Vm3Ai6M8cMU">
+            <span>☕ Regalame un café</span>
+          </a>
+        </li>
+        <li>
+          <a class="font-semibold text-lg" href="https://donate.stripe.com/5kAaFl2F68UC3zWdQZ">
+            <span>🌮 Invítame un buen taco</span>
+          </a>
+        </li>
+        <li>
+          <a class="font-semibold text-lg" href="https://donate.stripe.com/dR64gXenOgn44E0cMW">
+            <span>🍕 Invítame una pizza</span>
+          </a>
+        </li>
+      </ul>
+    </Container>
+</BaseLayout>

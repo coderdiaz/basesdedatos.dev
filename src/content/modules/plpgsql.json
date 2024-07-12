@@ -1,0 +1,16 @@
+{
+  "title": "PL/pgSQL, usos e implementaciones",
+  "order": 8,
+  "videos": [
+    {
+      "title": "Parte 1",
+      "duration": "43:10",
+      "url": "https://youtu.be/Kd1S9E1U6Bc"
+    },
+    {
+      "title": "Parte 2",
+      "duration": "39:55",
+      "url": "https://youtu.be/-XT04YM3EDM"
+    }
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "title": "Diagramas entidad-relación y normalización",
+  "order": 2,
+  "videos": [
+    {
+      "title": "Parte 1",
+      "duration": "48:58",
+      "url": "https://youtu.be/dC6I-SqixOg"
+    },
+    {
+      "title": "Parte 2",
+      "duration": "48:11",
+      "url": "https://youtu.be/rIquqWW-vDE"
+    }
+  ]
+}
