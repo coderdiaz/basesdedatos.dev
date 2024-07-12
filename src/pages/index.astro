@@ -2,6 +2,7 @@
 import { FilmIcon } from 'lucide-react';
 import Container from '@/components/Container.astro';
 import BaseLayout from '@/layouts/BaseLayout.astro';
+import Callout from '@/components/Callout.astro';
 
 const modules = (await Astro.glob('../content/modules/*.json')).sort((a, b) => a.order - b.order) ;
 ---
@@ -11,6 +12,9 @@ const modules = (await Astro.glob('../content/modules/*.json')).sort((a, b) => a
       <div class="flex flex-col gap-2.5">
         <h1 class="text-5xl leading-[3.5rem] font-bold">Curso gratuito de bases de datos con PostgreSQL </h1>
         <p class="text-lg font-medium">Un curso en vivo (ahora con grabaciones) diseñado para aquellas personas que buscan aprender bases de datos completamente desde cero o que buscan reforzar algunos conceptos.</p>
+        <Callout>
+          <p class="font-medium">Cada uno de videos se encuentra en formato de grabación, por lo que no contienen ningún tipo de edición y se encuentran tal cual fueron transmitidos en vivo.</p>
+        </Callout>
       </div>
     </Container>
   </section>
