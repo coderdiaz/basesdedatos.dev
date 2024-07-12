@@ -10,7 +10,7 @@ const modules = (await Astro.glob('../content/modules/*.json')).sort((a, b) => a
 ---
 <BaseLayout>
   <section>
-    <Container class="py-12">
+    <Container class="py-12 pb-4">
       <div class="flex flex-col gap-2.5">
         <h1 class="text-5xl leading-[3.5rem] font-bold">Curso gratuito de bases de datos con PostgreSQL </h1>
         <p class="text-lg font-medium">Un curso en vivo (ahora con grabaciones) diseñado para aquellas personas que buscan aprender bases de datos completamente desde cero o que buscan reforzar algunos conceptos.</p>
@@ -21,7 +21,7 @@ const modules = (await Astro.glob('../content/modules/*.json')).sort((a, b) => a
     </Container>
   </section>
   <section>
-    <Container class="py-10 flex flex-col gap-12">
+    <Container class="py-10 pb-20 flex flex-col gap-12">
       <h2 class="text-3xl font-bold">Contenido del curso</h2>
       <div class="flex flex-col gap-8">
         {modules.map((module) => (
@@ -40,8 +40,8 @@ const modules = (await Astro.glob('../content/modules/*.json')).sort((a, b) => a
       </div>
     </Container>
   </section>
-  <section>
-    <Container class="pt-24 pb-10 flex flex-col gap-3">
+  <section class="border-y border-gray-200">
+    <Container class="py-16 flex flex-col gap-3">
       <h2 id="donation" class="text-3xl font-bold">💖 Apoya mi trabajo</h2>
       <p>
         Si te ha gustado el contenido considera apoyarme con una donación, o también, puedes optar por compartir conmigo tu feedback para ayudarme a seguir mejorando y crear contenido de mayor calidad. Puedes enviarme tu retroalimentación a <a href="mailto:db@coderdiaz.com" class="font-semibold underline-offset-2">db@coderdiaz.com</a>.
@@ -65,7 +65,7 @@ const modules = (await Astro.glob('../content/modules/*.json')).sort((a, b) => a
       </ul>
     </Container>
   </section>
-  <section class="border-b border-gray-200">
+  <section>
     <Container class="md:px-0">
       <div class="py-16 flex flex-col-reverse md:flex-row gap-12  md:gap-4 items-center">
         <div class="flex flex-col gap-4 md:w-[60rem] md:px-10 flex-grow">
@@ -86,7 +86,7 @@ const modules = (await Astro.glob('../content/modules/*.json')).sort((a, b) => a
             <a href="https://twitter.com/coderdiaz" rel="noreferrer" class="mt-2 px-6 py-2.5 text-center md:text-left md:w-max rounded-full bg-black text-white font-semibold transition hover:scale-105 border-2 border-black">
               Sígueme en X
             </a>
-            <a href="https://coderdiaz.com" rel="noreferrer" class="mt-2 px-6 py-2.5 text-center md:text-left md:w-max rounded-full text-black ring-4 ring-gray-100/50 bg-gray-200 font-semibold transition hover:bg-accent-100 hover:ring-accent-100">
+            <a href="https://coderdiaz.com" rel="noreferrer" class="mt-2 px-6 py-2.5 text-center md:text-left md:w-max rounded-full text-black ring-4 ring-amber-100/50 bg-amber-400 font-semibold transition hover:bg-accent-100 hover:ring-amber-100">
               Visita mi sitio web
             </a>
           </div>
