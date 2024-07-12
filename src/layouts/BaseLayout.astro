@@ -1,5 +1,7 @@
 ---
 import Container from '@/components/Container.astro';
+
+const analytics = import.meta.env.ENABLED_ANALYTICS || false;
 ---
 <html lang="es" class="min-h-full antialiased selection:bg-accent-300 selection:text-accent-900">
   <head>
@@ -8,6 +10,9 @@ import Container from '@/components/Container.astro';
 		<meta name="viewport" content="width=device-width" />
 		<meta name="generator" content={Astro.generator} />
 		<title>Aprende bases de datos con PostgreSQL totalmente gratis</title>
+    { analytics && (
+      <script defer data-domain="basesdedatos.dev" src="https://analy.fun/js/script.js"></script>
+    )}
 	</head>
   <body class="font-sans leading-relaxed h-full flex flex-col text-[#39301B]">
     <section class="border-b border-gray-200">
