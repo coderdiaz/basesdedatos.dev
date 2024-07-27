@@ -1,69 +1,86 @@
 ---
-import { FilmIcon, InfoIcon } from 'lucide-react';
+import { FilmIcon } from 'lucide-react';
 import { Image } from 'astro:assets';
 import Container from '@/components/Container.astro';
+import Database from '@/components/svg/Database.astro';
 import BaseLayout from '@/layouts/BaseLayout.astro';
-import Callout from '@/components/Callout.astro';
 import ProfileAvatar from '@/assets/images/profile.jpg';
 
 const modules = (await Astro.glob('../content/modules/*.json')).sort((a, b) => a.order - b.order) ;
 ---
 <BaseLayout>
-  <section>
-    <Container class="py-12 pb-4">
-      <div class="flex flex-col gap-2.5">
-        <h1 class="text-5xl leading-[3.5rem] font-bold">Curso gratuito de bases de datos con PostgreSQL </h1>
-        <p class="text-lg font-medium">Un curso en vivo (ahora con grabaciones) para quienes buscan aprender bases de datos completamente desde cero o que buscan reforzar algunos conceptos.</p>
-        <h2 class="mt-6 font-bold text-2xl">Información</h2>
-        <p>El contenido esta diseñado para que personas que nunca han trabajado con bases de datos y desean incursionarse lo puedan hacer sin tantas fricciones. Cada uno de los módulos y clases fueron diseñadas tomando a los integrantes como referencia.</p>
-        <Callout class="flex-row text-base">
-          <InfoIcon size={18} className="flex-shrink-0 mt-1" />
-          <p class="font-medium text-base">Cada uno de los videos se encuentra en formato de grabación, por lo que no contienen ningún tipo de edición y se encuentran tal cual fueron transmitidos en vivo.</p>
-        </Callout>
-        <p>Este curso tiene como objetivo proporcionar conocimientos prácticos y teóricos a los estudiantes y profesionales para que puedan aprovechar al máximo sus bases de datos.</p>
+  <section class="bg-indigo-50/50 border-b border-indigo-100 overflow-hidden">
+    <Container class="py-20 relative">
+      <div class="flex flex-col gap-3 md:mr-44">
+        <span class="text-sm bg-indigo-500 text-white inset-4 w-max px-2.5 py-0.5 font-medium rounded-full ring-[2px] ring-indigo-100">Taller gratis</span>
+        <h1 class="text-3xl md:text-5xl font-bold text-balance">
+          Construye y diseña tus propias bases de datos con PostgreSQL desde cero.
+        </h1>
+        <p class="font-medium">
+          Un taller a través de grabaciones donde podrás aprender las bases fundamentales de las bases de datos, construir desde cero una base de datos, consultar y modificar información, entre muchas cosas más.
+        </p>
       </div>
+      <Database
+        class="absolute right-0 bottom-0 w-72 h-72 md:w-[22rem] md:h-[22rem] -mb-20 opacity-5 md:opacity-10 text-indigo-800"
+      />
     </Container>
   </section>
   <section>
-    <Container class="py-10 pb-20 flex flex-col gap-12">
-      <h2 class="text-3xl font-bold">Contenido del curso</h2>
-      <div class="flex flex-col gap-8">
+    <Container class="py-10">
+      <div class="flex flex-col gap-2">
+        <h2 class="text-2xl font-bold">Lecciones disponibles</h2>
+        <p class="text-gray-600">Más de <strong>16 horas de contenido</strong> dedicado a aprender a detalle sobre bases de datos. Cada una de las lecciones esta diseñada para aquellos que nunca han trabajado con una base de datos y buscan incursionarse en el tema, lo puedan hacer sin complicaciones.</p>
+      </div>
+      <div class="grid md:grid-cols-2 gap-6 gap-y-4 md:gap-y-8 mt-8">
         {modules.map((module) => (
-          <div class="flex flex-col gap-3">
-            <h3 class="font-bold text-xl">{module.title}</h3>
-            <div class="flex items-center gap-4">
+          <div class="flex flex-col bg-white border border-gray-200 rounded-xl overflow-hidden shadow-md shadow-gray-100">
+            <div class="w-full px-4 py-3 flex-1">
+              <h3 class="font-bold text-lg">{module.title}</h3>
+            </div>
+            <div class="flex items-center border-t border-gray-200 divide-x">
               {module.videos.map((video: any) => (
-                <a href={video.url} rel="noreferrer" class="flex items-center gap-1 font-semibold">
-                  <FilmIcon size={20} />
-                  <span>{video.title} ({video.duration})</span>
+                <a href={video.url} rel="noreferrer" class="bg-white flex flex-grow-0 items-center gap-1 font-medium w-full px-4 py-2.5 hover:bg-gray-50">
+                  <FilmIcon className="hidden md:block w-4" strokeWidth={1.25} />
+                  <span class="text-sm">{video.title} ({video.duration})</span>
                 </a>
               ))}
             </div>
           </div>
         ))}
-      </div>
     </Container>
   </section>
-  <section class="border-y border-gray-200">
-    <Container class="py-16 flex flex-col gap-3">
-      <h2 id="donation" class="text-3xl font-bold">💖 Apoya mi trabajo</h2>
-      <p>
-        Si te ha gustado el contenido considera apoyarme con una donación, o también, puedes optar por compartir conmigo tu feedback para ayudarme a seguir mejorando y crear contenido de mayor calidad. Puedes enviarme tu retroalimentación a <a href="mailto:db@coderdiaz.com" class="font-semibold underline-offset-2">db@coderdiaz.com</a>.
-      </p>
-      <ul class="flex flex-col gap-3 mt-2">
+  <section class="border-y border-indigo-100">
+    <Container class="py-16">
+      <div class="flex flex-col gap-2.5">
+        <h2 class="text-2xl font-bold">💖 Apoya mi trabajo</h2>
+        <p class="text-gray-700">
+          Si te ha gustado el contenido considera apoyarme con una donación, o también, puedes compartir conmigo tu retroalimentación para ayudarme a seguir mejorando y creando contenido de mayor calidad.
+        </p>
+      </div>
+      <ul class="flex gap-5 gap-y-4 mt-3.5 flex-wrap">
         <li>
-          <a class="font-semibold text-lg" href="https://donate.stripe.com/14k00H6Vm3Ai6M8cMU">
-            <span>☕ Regalame un café</span>
+          <a class="font-semibold" href="https://donate.stripe.com/5kA3cTdjKfj00nKfZ9">
+            <span>💊 Ayúdame con mis medicamentos</span>
           </a>
         </li>
         <li>
-          <a class="font-semibold text-lg" href="https://donate.stripe.com/5kAaFl2F68UC3zWdQZ">
-            <span>🌮 Invítame un buen taco</span>
+          <a class="font-semibold" href="mailto:db@coderdiaz.com">
+            <span>📧 Envíame tu feedback</span>
           </a>
         </li>
         <li>
-          <a class="font-semibold text-lg" href="https://donate.stripe.com/dR64gXenOgn44E0cMW">
-            <span>🍕 Invítame una pizza</span>
+          <a class="font-semibold" href="https://donate.stripe.com/14k00H6Vm3Ai6M8cMU">
+            <span>🥭 Regalame una fruta (US$3.99)</span>
+          </a>
+        </li>
+        <li>
+          <a class="font-semibold" href="https://donate.stripe.com/5kAaFl2F68UC3zWdQZ">
+            <span>🌮 Invítame un taco (US$5.99)</span>
+          </a>
+        </li>
+        <li>
+          <a class="font-semibold" href="https://donate.stripe.com/dR64gXenOgn44E0cMW">
+            <span>🍕 Invítame una pizza (US$10.00)</span>
           </a>
         </li>
       </ul>
@@ -76,7 +93,7 @@ const modules = (await Astro.glob('../content/modules/*.json')).sort((a, b) => a
           <h3 class="text-2xl font-bold">Hola!, Soy Javier Diaz</h3>
           <div class="relative flex flex-col gap-1.5 font-medium text-tones-900">
             <p>
-              Un freelancer mexicano que trabaja con varias startups, empresas, agencias y particulares para construir productos y servicios para la web.
+              Un ingeniero de software mexicano que ha trabajado en diferentes startups, empresas, agencias y particulares construyendo productos y servicios para la web.
             </p>
             <p>
               Me gusta colaborar con personas y equipos para crear experiencias y productos fantásticos que sean fáciles de usar.

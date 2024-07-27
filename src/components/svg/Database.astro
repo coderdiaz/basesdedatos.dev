@@ -1,0 +1,19 @@
+---
+import { cn } from '@/lib/utils';
+
+interface Props {
+  class?: string;
+}
+
+const { class: className } = Astro.props;
+---
+
+<svg class={cn('w-6 h-6', className)} viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path opacity="0.4" d="M12 8C16.4183 8 20 6.65685 20 5V19C20 20.6569 16.4183 22 12 22C7.58172 22 4 20.6569 4 19V5C4 6.65685 7.58172 8 12 8Z" fill="currentColor"/>
+  <path d="M12 8C16.4183 8 20 6.65685 20 5C20 3.34315 16.4183 2 12 2C7.58172 2 4 3.34315 4 5C4 6.65685 7.58172 8 12 8Z" stroke="currentColor" stroke-width="1.25"/>
+  <path d="M7 10.8418C7.60158 11.0227 8.27434 11.1716 9 11.2818" stroke="currentColor" stroke-width="1.25" stroke-linecap="round"/>
+  <path d="M20 12C20 13.6569 16.4183 15 12 15C7.58172 15 4 13.6569 4 12" stroke="currentColor" stroke-width="1.25"/>
+  <path d="M7 17.8418C7.60158 18.0227 8.27434 18.1716 9 18.2818" stroke="currentColor" stroke-width="1.25" stroke-linecap="round"/>
+  <path d="M20 5V19C20 20.6569 16.4183 22 12 22C7.58172 22 4 20.6569 4 19V5" stroke="currentColor" stroke-width="1.25"/>
+  </svg>
+  

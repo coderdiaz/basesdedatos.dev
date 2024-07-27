@@ -11,11 +11,17 @@ const seoImage = `https://basesdedatos.dev${image.src}`;
 <html lang="es" class="min-h-full antialiased selection:bg-accent-300 selection:text-accent-900">
   <head>
 		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="theme-color" content="#ffffff">
 		<meta name="viewport" content="width=device-width" />
 		<meta name="generator" content={Astro.generator} />
 		<title>Curso gratis de base de datos desde cero con PostgreSQL</title>
-    <meta name="keywords" content="sql, bases de datos, postgresql, cursos, cursos en español, curso de bases de datos, curso gratis de postgres, aprende postgres, postgres, curso de bases de datos gratis, curso sql desde cero, sql aprender, aprender sql, curso de bases de datos sql" />
+    <meta name="keywords" content="sql, bases de datos, postgresql, cursos, cursos en español, curso de bases de datos, curso gratis de postgres, aprende postgres, postgres, curso de bases de datos gratis, curso sql desde cero, sql aprender, aprender sql, curso de bases de datos sql, taller de bases de datos" />
     <meta property="og:type" content="website" />
     <meta property="og:title" content="Curso gratis de base de datos desde cero con PostgreSQL" />
     <meta property="og:description" content="Descubre el poder de las bases de datos relacionales y aprende a trabajar con SQL para almacenar, filtrar, organizar y manipular información." />
@@ -30,27 +36,39 @@ const seoImage = `https://basesdedatos.dev${image.src}`;
       <script defer data-domain="basesdedatos.dev" src="https://analy.fun/js/script.js"></script>
     )}
 	</head>
-  <body class="font-sans leading-relaxed h-full flex flex-col text-[#39301B]">
-    <section class="border-b border-gray-200">
-      <Container>
-        <a href="#donation" class="py-3 flex flex-col md:flex-row md:items-center md:justify-between text-sm font-medium">
-          <p class="font-semibold">Si te ha gustado, no te olvides de apoyarlo con una donación o tu feedback</p>
-          <p>Contribuir <span aria-hidden="true">→</span></p>
-        </a>
-      </Container>
-    </section>
-    <header>
+  <body class="font-sans leading-relaxed h-full flex flex-col">
+    <header class="bg-indigo-50/50">
       <Container>
         <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-2 md:gap-3 pt-8">
           <a href="/" class="flex items-center gap-2">
-            <span class="font-semibold">Aprende bases de datos</span>
+            <span class="font-semibold text-base lg:text-lg">Aprende bases de datos</span>
           </a>
-          <nav class="flex items-center gap-4 gap-y-1 flex-wrap"></nav>
+          <nav class="flex items-center text-sm gap-6 gap-y-1 flex-wrap">
+            <a class="relative text-gray-400 font-medium" href="#">
+              Guías
+            </a>
+            <a class="relative text-gray-400 font-medium" href="#">
+              Ejercicios
+            </a>
+            <a class="relative text-gray-400 font-medium" href="#">
+              Artículos
+            </a>
+          </nav>
         </div>
       </Container>
     </header>
     <main class="h-full flex-grow">
       <slot />
     </main>
+    <footer>
+      <Container>
+        <div class="flex flex-col gap-8 pt-16 pb-20">
+          <p class="font-medium text-gray-500 text-sm">
+            Construído y desarrollado por <a class="font-medium" href="https://x.com/coderdiaz" rel="noreferrer">@coderdiaz</a>
+          </p>
+          <p class="text-sm text-gray-400">Desde &copy; 2024.</p>
+        </div>
+      </Container>
+    </footer>
   </body>
 </html>
