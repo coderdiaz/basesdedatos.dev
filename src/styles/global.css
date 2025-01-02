@@ -1,0 +1,8 @@
+:root { font-family: "Inter", sans-serif; }
+
+@supports (font-variation-settings: normal) {
+  :root { font-family: "InterVariable", sans-serif; font-optical-sizing: auto; }
+}
+
+.cursor-none a { cursor: none }
+h1, h2, h3, h4, h5, h6 { letter-spacing: -0.0300em; }
