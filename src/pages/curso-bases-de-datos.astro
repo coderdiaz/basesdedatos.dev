@@ -1,0 +1,94 @@
+---
+import { getCollection } from 'astro:content';
+import { FilmIcon } from 'lucide-react';
+import Container from '@/components/Container.astro';
+import Database from '@/components/svg/Database.astro';
+import Check from '@/components/svg/Check.astro';
+import BaseLayout from '@/layouts/BaseLayout.astro';
+
+const modules = (await getCollection('modules')).sort((a: any, b: any) => a.order - b.order) ;
+---
+<BaseLayout>
+  <section class="bg-[#F7F9FC] border-b border-indigo-100 overflow-hidden">
+    <Container class="py-14 pb-12 relative">
+      <div class="flex flex-col gap-3 md:mr-44">
+        <span class="text-sm bg-green-600 text-white inset-4 w-max px-2.5 py-0.5 font-medium rounded-full ring-[2px] ring-green-100">Taller Gratis</span>
+        <h1 class="text-3xl md:text-5xl font-bold text-balance">
+          Construye y diseña tus propias bases de datos desde cero con PostgreSQL.
+        </h1>
+        <p class="font-medium md:text-lg">
+          Aprende a construir y diseñar bases de datos para que crees mejores soluciones tecnológicas y lleves tus proyectos al siguiente nivel.
+        </p>
+      </div>
+      <Database
+        class="absolute right-0 bottom-0 w-72 h-72 md:w-[22rem] md:h-[22rem] -mb-20 opacity-5 md:opacity-10 text-indigo-800"
+      />
+    </Container>
+  </section>
+  <section>
+    <Container class="py-12">
+      <div class="flex flex-col gap-6">
+        <h2 class="text-2xl md:text-3xl font-semibold">
+          Aprenderás sobre diseño de <span class="text-indigo-600">bases de datos</span> y <span class="text-green-600">SQL</span> completamente desde cero.
+        </h2>
+        <div class="flex flex-col gap-3 md:text-lg">
+          <p>Trabajaremos con PostgreSQL, un motor de base de datos open-source y uno de los más utilizados en el mercado. Además, este curso te ayudará a crear y diseñar mejores soluciones en sistemas de información.</p>
+          <p>En este curso aprenderás:</p>
+          <ul class="flex flex-col gap-2.5 py-2.5">
+            <li class="flex items-start gap-2 text-black">
+              <Check class="fill-indigo-200 flex-shrink-0 mt-1" size={20} />
+              <span>Crear modelos entidad-relación</span>
+            </li>
+            <li class="flex items-start gap-2 text-black">
+              <Check class="fill-indigo-200 flex-shrink-0 mt-1" size={20} />
+              <span>Diseñar bases de datos eficientes</span>
+            </li>
+            <li class="flex items-start gap-2 text-black">
+              <Check class="fill-indigo-200 flex-shrink-0 mt-1" size={20} />
+              <span>Llaves primarias, foráneas y relaciones</span>
+            </li>
+            <li class="flex items-start gap-2 text-black">
+              <Check class="fill-indigo-200 flex-shrink-0 mt-1" size={20} />
+              <span>Escribir consultas y conectar información con SQL</span>
+            </li>
+            <li class="flex items-start gap-2 text-black">
+              <Check class="fill-indigo-200 flex-shrink-0 mt-1" size={20} />
+              <span>Definir procedimientos almacenados y funciones con PL/pgSQL</span>
+            </li>
+            <li class="flex items-start gap-2 text-black">
+              <Check class="fill-indigo-200 flex-shrink-0 mt-1" size={20} />
+              <span>Formas normales (Normalización) y más...</span>
+            </li>
+          </ul>
+          <p>Al terminar el taller, tendrás la confianza de trabajar y manipular una bases de datos sin preocupaciones. Para que puedas hacer tu trabajo de forma más eficiente y siempre de la mano con los conocimientos que haz adquirido.</p>
+        </div>
+      </div>
+    </Container>
+  </section>
+  <section>
+    <Container class="pt-0 pb-12">
+      <div class="flex flex-col gap-2">
+        <h2 class="text-2xl font-bold">Lecciones disponibles</h2>
+        <p class="text-lg">Más de <strong>16 horas de contenido</strong> dedicado para que puedas aprender a detalle sobre las bases de datos. Cada una de estas lecciones esta diseñada para que aquellos que nunca han trabajado con una base de datos, lo puedan hacer sin complicaciones.</p>
+      </div>
+      <div class="grid gap-6 gap-y-4 md:gap-y-8 mt-8">
+        {modules.map((module: any, index: number) => (
+          <div class="flex flex-col bg-white border border-gray-200 rounded-xl overflow-hidden shadow-md shadow-gray-100">
+            <div class="w-full px-4 py-3 flex flex-col gap-1 flex-1">
+              <h3 class="font-bold text-lg">{index+1}. {module.data.title}</h3>
+              { module.data.description && <p>{module.data.description}</p>}
+            </div>
+            <div class="flex items-center border-t border-gray-200 divide-x">
+              <a href={module.data.video?.url} rel="noopener" class="bg-white flex flex-grow-0 items-center gap-1 font-medium w-full px-4 py-2.5 hover:bg-gray-50 justify-between">
+                <span class="flex items-center gap-2">
+                  <FilmIcon className="hidden md:block w-4" strokeWidth={1.25} />
+                  <span class="text-sm font-medium">Ver video</span>
+                </span>
+                <span class="text-sm">{module.data.video?.duration}</span>
+              </a>
+            </div>
+          </div>
+        ))}
+    </Container>
+  </section>
+</BaseLayout>
