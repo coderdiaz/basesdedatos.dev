@@ -1,6 +1,7 @@
 import { defineConfig } from 'astro/config';
 import react from '@astrojs/react';
 import tailwind from '@tailwindcss/vite';
+import mdx from '@astrojs/mdx';
 
 // https://astro.build/config
 export default defineConfig({
@@ -9,5 +10,7 @@ export default defineConfig({
   vite: {
     plugins: [tailwind()],
   },
-  integrations: [react()]
+  integrations: [react(), mdx({
+    optimize: true,
+  })]
 });
