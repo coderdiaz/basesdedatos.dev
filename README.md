@@ -1,14 +1,8 @@
-# Astro Starter Kit: Minimal
+# basesdedatos.dev
 
-```sh
-npm create astro@latest -- --template minimal
-```
+BasesdeDatos.dev is a comprehensive platform dedicated to creating and sharing high-quality content related to database technologies. This project aims to provide educational resources, tutorials, best practices, and insights about various database systems, SQL, NoSQL, data modeling, optimization techniques, and other database-related topics. 
 
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/withastro/astro/tree/latest/examples/minimal)
-[![Open with CodeSandbox](https://assets.codesandbox.io/github/button-edit-lime.svg)](https://codesandbox.io/p/sandbox/github/withastro/astro/tree/latest/examples/minimal)
-[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/withastro/astro?devcontainer_path=.devcontainer/minimal/devcontainer.json)
-
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+Whether you're a beginner learning the fundamentals or an experienced professional looking for advanced concepts, this site serves as a valuable resource for the database community.
 
 ## 🚀 Project Structure
 
@@ -43,5 +37,4 @@ All commands are run from the root of the project, from a terminal:
 | `npm run astro -- --help` | Get help using the Astro CLI                     |
 
 ## 👀 Want to learn more?
-
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+Feel free to check the [Astro documentation](https://docs.astro.build).
