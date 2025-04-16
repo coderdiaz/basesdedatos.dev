@@ -1,3 +1,5 @@
+@import "tailwindcss";
+
 :root { font-family: "Inter", sans-serif; }
 
 @supports (font-variation-settings: normal) {
@@ -6,3 +8,7 @@
 
 .cursor-none a { cursor: none }
 h1, h2, h3, h4, h5, h6 { letter-spacing: -0.0300em; }
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+}
