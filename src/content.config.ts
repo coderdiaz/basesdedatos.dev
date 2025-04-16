@@ -1,8 +1,18 @@
 import { glob } from 'astro/loaders';
-import { defineCollection, z } from 'astro:content';
+import { defineCollection, z, type ImageFunction } from 'astro:content';
+
+const seoSchema = (image: ImageFunction) =>
+  z.object({
+    title: z.string(),
+    description: z.string(),
+    type: z.string().optional(),
+    image: image().optional(),
+    keywords: z.string().optional(),
+    canonicalUrl: z.string(),
+  });
 
 const modules = defineCollection({
-  loader: glob({ pattern: '**/*.md', base: './src/content/modules' }),
+  loader: glob({ pattern: '**/[^_]*.{md,mdx}', base: './src/content/modules' }),
   schema: z.object({
     title: z.string(),
     description: z.string(),
@@ -12,6 +22,18 @@ const modules = defineCollection({
       url: z.string(),
     })
   })
-})
+});
 
-export const collections = { modules };
+const articles = defineCollection({
+  loader: glob({ pattern: '**/*.{md,mdx}', base: './src/content/articles' }),
+  schema: ({ image }) =>
+    z.object({
+      draft: z.boolean().default(false),
+      title: z.string(),
+      featuredImage: image().optional(),
+      publishedAt: z.date().nullable(),
+      seo: seoSchema(image).optional(),
+    }),
+});
+
+export const collections = { modules, articles };
