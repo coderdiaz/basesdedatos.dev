@@ -1,0 +1,48 @@
+---
+import { type CollectionEntry, render } from 'astro:content';
+import { getCollection } from 'astro:content';
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import { includeDraft } from '@/lib/utils';
+import Container from '@/components/Container.astro';
+import { Image } from 'astro:assets';
+
+export async function getStaticPaths() {
+  const entries = await getCollection('articles', ({ data }: CollectionEntry<'articles'>) => includeDraft(data.draft)) as Array<CollectionEntry<'articles'>>;
+
+  return entries.map(entry => ({
+    params: { slug: entry.id }, props: { entry },
+  }));
+}
+
+const { entry } = Astro.props;
+const { Content } = await render(entry);
+---
+<BaseLayout seo={entry.data.seo}>
+  <Container>
+    <article class="py-10">
+      <div class="flex flex-col gap-2.5">
+        <div class="relative flex flex-col gap-1">
+          <time
+            class="font-medium text-gray-600"
+            datetime={entry.data.publishedAt.toISOString()}>
+            Publicado el {(entry.data.publishedAt.getDate()).toString().padStart(2, '0')} de
+            {' '}{['enero','febrero','marzo','abril','mayo','junio','julio','agosto','septiembre','octubre','noviembre','diciembre'][entry.data.publishedAt.getMonth()]} de {entry.data.publishedAt.getFullYear()}
+          </time>
+          <h1 class="text-[1.9rem] md:text-[2.5rem] leading-[1.1] font-bold mb-2">
+            {entry.data.title}
+          </h1>
+        </div>
+        { entry.data.featuredImage && (
+          <div class="relative overflow-hidden rounded-2xl aspect-video border border-tones-100">
+            <Image class="object-cover" src={entry.data.featuredImage as ImageMetadata} alt={entry.data.title} />
+          </div>
+        )}
+      </div>
+      <main class="py-8 mx-12">
+        <div class="max-w-full prose md:prose-lg">
+          <Content />
+        </div>
+      </main>
+    </article>
+  </Container>
+</BaseLayout>
