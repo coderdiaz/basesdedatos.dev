@@ -5,18 +5,20 @@ import Container from '@/components/Container.astro';
 import Database from '@/components/svg/Database.astro';
 import Check from '@/components/svg/Check.astro';
 import BaseLayout from '@/layouts/BaseLayout.astro';
+import { defaultSeo } from '@/lib/constants';
 
-const modules = (await getCollection('modules')).sort((a: any, b: any) => a.order - b.order) ;
+const modules = (await getCollection('modules')).sort((a, b) => a.data.order - b.data.order) ;
+
 ---
-<BaseLayout>
-  <section class="bg-[#F7F9FC] border-b border-indigo-100 overflow-hidden">
+<BaseLayout seo={defaultSeo}>
+  <section class="border-b border-indigo-100 overflow-hidden">
     <Container class="py-14 pb-12 relative">
       <div class="flex flex-col gap-3 md:mr-44">
         <span class="text-sm bg-green-600 text-white inset-4 w-max px-2.5 py-0.5 font-medium rounded-full ring-[2px] ring-green-100">Taller Gratis</span>
         <h1 class="text-3xl md:text-5xl font-bold text-balance">
           Construye y diseña tus propias bases de datos desde cero con PostgreSQL.
         </h1>
-        <p class="font-medium md:text-lg">
+        <p class="font-medium md:text-lg text-gray-600">
           Aprende a construir y diseñar bases de datos para que crees mejores soluciones tecnológicas y lleves tus proyectos al siguiente nivel.
         </p>
       </div>
