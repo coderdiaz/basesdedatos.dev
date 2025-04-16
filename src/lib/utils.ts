@@ -12,3 +12,10 @@ export function cn(...inputs: ClassValue[]) {
 }
 
 export const generateAbsoluteUrl = (path: string) => constants.BASE_URL.concat(path);
+
+export const isDevelopment = () => import.meta.env.MODE === 'development';
+
+export const includeDraft = (draft: boolean) => {
+  if (isDevelopment()) return true;
+  return draft !== true;
+};

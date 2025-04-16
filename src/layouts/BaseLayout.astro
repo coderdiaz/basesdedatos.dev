@@ -3,11 +3,17 @@ import '@/styles/global.css';
 import '@/assets/fonts/inter.css';
 import { getImage } from 'astro:assets';
 import Container from '@/components/Container.astro';
-import SeoMeta from '@/assets/images/meta.jpg';
+import { defaultSeo } from '@/lib/constants';
 
 const analytics = import.meta.env.ENABLED_ANALYTICS || false;
 
-const image = await getImage({ src: SeoMeta, format: 'png'});
+interface Props {
+  seo: any;
+}
+
+const { seo } = Astro.props;
+
+const image = await getImage({ src: seo?.image || defaultSeo.image, format: 'png'});
 const seoImage = `https://basesdedatos.dev${image.src}`;
 ---
 <html lang="es" class="min-h-full antialiased selection:bg-accent-300 selection:text-accent-900">
@@ -22,24 +28,32 @@ const seoImage = `https://basesdedatos.dev${image.src}`;
     <meta name="theme-color" content="#ffffff">
 		<meta name="viewport" content="width=device-width" />
 		<meta name="generator" content={Astro.generator} />
-		<title>Curso de diseño de bases de datos y SQL con PostgreSQL</title>
-    <meta name="keywords" content="sql, bases de datos, postgresql, cursos, cursos en español, curso de bases de datos, curso gratis de postgres, aprende postgres, postgres, curso de bases de datos gratis, curso sql desde cero, sql aprender, aprender sql, curso de bases de datos sql, taller de bases de datos" />
-    <meta property="og:type" content="website" />
-    <meta property="og:title" content="Curso de diseño de bases de datos y SQL con PostgreSQL" />
-    <meta property="og:description" content="Aprende a diseñar y construir bases de datos relacionales con PostgreSQL y SQL desde cero. Curso gratuito para dominar consultas, relaciones y diseño eficiente de bases de datos." />
+		<title>{seo?.title || defaultSeo.title}</title>
+    {seo?.canonicalUrl && (
+      <link rel="canonical" href={seo?.canonicalUrl} />
+    )}
+    <slot name="keywords">
+      <meta name="keywords" content={seo?.keywords || defaultSeo.keywords} />
+    </slot>
+    <!-- Open Graph -->
+    <meta property="og:type" content={seo?.type || defaultSeo.type} />
+    <meta property="og:title" content={seo?.title || defaultSeo.title} />
+    <meta property="og:description" content={seo?.description || defaultSeo.description} />
     <meta property="og:image" content={seoImage} />
+    <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image" />
     <meta property="twitter:url" content="https://basesdedatos.dev/" />
     <meta property="twitter:creator" content="@coderdiaz" />
-    <meta property="twitter:title" content="Curso de diseño de bases de datos y SQL con PostgreSQL" />
-    <meta property="twitter:description" content="Aprende a diseñar y construir bases de datos relacionales con PostgreSQL y SQL desde cero. Curso gratuito para dominar consultas, relaciones y diseño eficiente de bases de datos." />
+    <meta property="twitter:title" content={seo?.title || defaultSeo.title} />
+    <meta property="twitter:description" content={seo?.description || defaultSeo.description} />
     <meta property="twitter:image" content={seoImage} />
+    <!-- Analytics -->
     { analytics && (
       <script is:inline defer data-domain="basesdedatos.dev" src="https://analy.cc/js/script.js"></script>
     )}
 	</head>
   <body class="font-sans leading-relaxed h-full flex flex-col">
-    <header class="bg-[#F7F9FC]">
+    <header>
       <Container>
         <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-2 md:gap-3 pt-8">
           <a href="/" class="flex items-center gap-2">
