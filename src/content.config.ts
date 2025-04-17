@@ -36,4 +36,20 @@ const articles = defineCollection({
     }),
 });
 
-export const collections = { modules, articles };
+const courseModules = defineCollection({
+  loader: glob({ pattern: '**/*.{md,mdx}', base: './src/content/course' }),
+  schema: z.object({
+    title: z.string(),
+    description: z.string(),
+    items: z.array(z.object({
+      title: z.string(),
+      description: z.string(),
+      video: z.object({
+        duration: z.string(),
+        url: z.string(),
+      })
+    }))
+  })
+});
+
+export const collections = { modules, articles, courseModules };

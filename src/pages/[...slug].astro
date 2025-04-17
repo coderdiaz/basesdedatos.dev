@@ -5,6 +5,7 @@ import BaseLayout from '@/layouts/BaseLayout.astro';
 import { includeDraft } from '@/lib/utils';
 import Container from '@/components/Container.astro';
 import { Image } from 'astro:assets';
+import EditOnGithub from '@/components/EditOnGithub.astro';
 
 export async function getStaticPaths() {
   const entries = await getCollection('articles', ({ data }: CollectionEntry<'articles'>) => includeDraft(data.draft)) as Array<CollectionEntry<'articles'>>;
@@ -38,11 +39,12 @@ const { Content } = await render(entry);
           </div>
         )}
       </div>
-      <main class="py-8 mx-12">
+      <main class="py-8 mx-1.5 md:mx-12">
         <div class="max-w-full prose md:prose-lg">
           <Content />
         </div>
       </main>
+      <EditOnGithub slug={entry.id} />
     </article>
   </Container>
 </BaseLayout>

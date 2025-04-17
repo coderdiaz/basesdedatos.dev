@@ -7,7 +7,7 @@ import Check from '@/components/svg/Check.astro';
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import { defaultSeo } from '@/lib/constants';
 
-const modules = (await getCollection('modules')).sort((a, b) => a.data.order - b.data.order) ;
+const courseModules = (await getCollection('courseModules'))
 
 ---
 <BaseLayout seo={defaultSeo}>
@@ -74,23 +74,29 @@ const modules = (await getCollection('modules')).sort((a, b) => a.data.order - b
         <p class="text-lg">Más de <strong>16 horas de contenido</strong> dedicado para que puedas aprender a detalle sobre las bases de datos. Cada una de estas lecciones esta diseñada para que aquellos que nunca han trabajado con una base de datos, lo puedan hacer sin complicaciones.</p>
       </div>
       <div class="grid gap-6 gap-y-4 md:gap-y-8 mt-8">
-        {modules.map((module: any, index: number) => (
+        {courseModules.map((module) => (
           <div class="flex flex-col bg-white border border-gray-200 rounded-xl overflow-hidden shadow-md shadow-gray-100">
-            <div class="w-full px-4 py-3 flex flex-col gap-1 flex-1">
-              <h3 class="font-bold text-lg">{index+1}. {module.data.title}</h3>
+            <div class="w-full px-4 py-3 flex flex-col flex-1">
+              <h3 class="font-bold text-lg">{module.data.title}</h3>
               { module.data.description && <p>{module.data.description}</p>}
             </div>
-            <div class="flex items-center border-t border-gray-200 divide-x">
-              <a href={module.data.video?.url} rel="noopener" class="bg-white flex flex-grow-0 items-center gap-1 font-medium w-full px-4 py-2.5 hover:bg-gray-50 justify-between">
+            {module.data.items.map((item) => (
+              <div class="flex items-center border-t border-gray-200 divide-x">
+                <a href={item.video?.url} rel="noopener" class="bg-white flex flex-grow-0 items-center gap-1 font-medium w-full px-4 py-2.5 hover:bg-gray-50 justify-between">
                 <span class="flex items-center gap-2">
                   <FilmIcon className="hidden md:block w-4" strokeWidth={1.25} />
-                  <span class="text-sm font-medium">Ver video</span>
-                </span>
-                <span class="text-sm">{module.data.video?.duration}</span>
-              </a>
-            </div>
+                  <span class="text-sm font-medium">{item.title}</span>
+                  </span>
+                  <span class="text-sm">{item.video?.duration}</span>
+                </a>
+              </div>
+            ))}
           </div>
         ))}
+      </div>
+      <div class="mt-8">
+        <p class="text-lg">Si te gustaría ver algún tema más o tienes alguna sugerencia, puedes contactarme a través de mi correo <a href="mailto:hey@coderdiaz.com" class="text-indigo-600">hey@coderdiaz.com</a>.</p>
+      </div>
     </Container>
   </section>
 </BaseLayout>
